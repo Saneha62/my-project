@@ -1,0 +1,110 @@
+Live Character Counter: Test Cases & Styling Guide
+
+1. Character Count Updates
+Test Case
+
+This feature displays the number of characters typed in a textarea and updates in real time.
+
+Expected Behavior:
+
+The counter starts at 0 before the user types anything.
+Each keystroke (letters, numbers, spaces, symbols) increases the count.
+Deleting text decreases the count immediately.
+
+Passes if:
+
+The number updates instantly while typing or deleting.
+The displayed count matches the actual number of characters in the textarea.
+
+Fails if:
+
+The counter doesn’t update in real time.
+The number displayed does not match the actual number of characters entered.
+
+2. Placeholder & Initial State
+
+Test Case
+The textarea should provide guidance with a placeholder message, and the counter should show zero initially.
+
+Expected Behavior:
+
+Placeholder text "Start typing..." is visible when the textarea is empty.
+Character count is 0 before the user types.
+
+Passes if:
+
+The placeholder disappears as soon as the user starts typing.
+The counter begins at zero on page load.
+
+Fails if:
+
+The placeholder is missing or doesn’t clear after typing starts.
+The counter shows a non-zero value before typing.
+
+3. Layout & Styling
+Test Case
+
+The feature should be neatly styled and easy to use.
+
+Layout Structure:
+
+Heading: "Live Character Counter" displayed above the textarea.
+Textarea: Expands to full width with a fixed height.
+Counter: Positioned below the textarea, bold text, showing "Characters: X".
+
+Passes if:
+
+The counter is aligned properly under the textarea.
+Textarea is large enough for comfortable typing.
+Styling remains consistent across different screen sizes.
+
+Fails if:
+
+The counter overlaps with the textarea.
+Elements are misaligned or cut off on resizing.
+
+4. Accessibility
+Test Case
+
+The component should be easy for all users to interact with.
+
+Passes if:
+
+The placeholder provides clear instructions.
+Counter text is readable and not too small.
+
+Works smoothly across common browsers (Chrome, Firefox, Edge).
+
+Fails if:
+
+The placeholder is unclear or missing.
+Counter text is too small or blends into the background.
+
+CSS Styling Breakdown
+Key Styles
+
+Textarea:
+
+Width: 100%
+Height: ~100px for comfortable typing
+Font size: 16px for readability
+
+Padding: 8–10px
+
+Counter:
+
+Margin-top: small spacing from textarea
+Font-weight: bold
+
+Color: dark gray/black for visibility
+Container (Optional):
+
+Border around the feature for a clean, framed look
+Padding to prevent text from touching the edges
+
+Learning Outcomes
+
+Event Handling: Practice handling input events in JavaScript.
+Dynamic Updates: Learn how to update the DOM in real time.
+User Interaction: Understand how to provide instant feedback to users.
+Styling Basics: Improve layout and typography for readability and usability.s
