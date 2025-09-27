@@ -1,0 +1,102 @@
+Dynamic Product Filter with Dropdown: Test Cases & Styling Guide
+This document outlines the functionality, expected behavior, and styling approach for the Dynamic Product Filter feature.
+
+1. Dropdown Filtering
+Test Case
+
+The dropdown allows users to filter products by category: All, Clothing, Electronics, Books.
+Expected Behavior (All Selected):
+
+All products are displayed in a vertical list.
+Expected Behavior (Specific Category Selected):
+
+Only products that belong to the chosen category are displayed.
+
+Passes if:
+
+Selecting a category instantly updates the product list.
+The products shown exactly match the selected category.
+
+Fails if:
+
+Filtering does not happen in real time.
+Wrong products appear or disappear incorrectly.
+
+2. Initial State
+Test Case
+
+When the page loads, the dropdown should be set to All, showing all available products.
+
+Passes if:
+
+Dropdown shows All on page load.
+All products (Clothing, Electronics, Books) are visible.
+
+Fails if:
+
+The dropdown defaults to a specific category.
+Some products are hidden before any selection is made.
+
+3. Layout & Responsiveness
+Test Case
+
+The product list and dropdown should be clearly structured inside a styled container.
+
+Layout Structure:
+
+Heading: "Product List" at the top.
+
+Dropdown Menu: Below heading, labeled Filter by Category.
+
+Product List: Each product displayed as a separate row inside a bordered box.
+
+Passes if:
+
+Dropdown and products are aligned neatly.
+Each product appears in its own row.
+Layout remains consistent when resizing the browser window.
+
+Fails if:
+
+Products overlap or appear inline instead of block rows.
+Container breaks when resizing.
+
+4. User Interaction
+Test Case
+
+Filtering must be seamless and user-friendly.
+
+Passes if:
+
+Selecting a new category instantly hides irrelevant products.
+Dropdown interaction feels smooth with no reloads.
+
+Fails if:
+
+User has to refresh the page to see filtered results.
+Dropdown selection causes layout glitches.
+CSS Styling Breakdown
+Key Components
+
+Container:
+
+Bordered box with padding and margin for spacing.
+Fixed width (~500px) for consistent layout.
+
+Dropdown Menu:
+
+Positioned below the heading.
+Adequate padding for clickable area.
+
+Product Items:
+
+Displayed as block elements (one per row).
+Light border (#ddd) with subtle background (#fff) for readability.
+Small margin between products.
+
+Learning Outcomes
+
+DOM Manipulation: Understand how to use JavaScript to dynamically show/hide elements.
+Event Handling: Learn to handle change events on dropdowns.
+Real-time Filtering: Gain experience in updating the DOM instantly without reloading.
+UI Structuring: Practice creating clean, responsive layouts with CSS.
