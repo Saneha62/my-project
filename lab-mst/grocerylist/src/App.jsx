@@ -21,7 +21,7 @@ function App() {
   // Remove item
   const removeItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
-  };
+  }; 
 
   // Update quantity
   const updateQuantity = (id, qty) => {
