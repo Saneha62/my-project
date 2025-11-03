@@ -1,102 +1,110 @@
-Dynamic Product Filter with Dropdown: Test Cases & Styling Guide
-This document outlines the functionality, expected behavior, and styling approach for the Dynamic Product Filter feature.
+Live Character Counter: Test Cases & Styling Guide
 
-1. Dropdown Filtering
+1. Character Count Updates
 Test Case
 
-The dropdown allows users to filter products by category: All, Clothing, Electronics, Books.
-Expected Behavior (All Selected):
+This feature displays the number of characters typed in a textarea and updates in real time.
 
-All products are displayed in a vertical list.
-Expected Behavior (Specific Category Selected):
+Expected Behavior:
 
-Only products that belong to the chosen category are displayed.
+The counter starts at 0 before the user types anything.
+Each keystroke (letters, numbers, spaces, symbols) increases the count.
+Deleting text decreases the count immediately.
 
 Passes if:
 
-Selecting a category instantly updates the product list.
-The products shown exactly match the selected category.
+The number updates instantly while typing or deleting.
+The displayed count matches the actual number of characters in the textarea.
 
 Fails if:
 
-Filtering does not happen in real time.
-Wrong products appear or disappear incorrectly.
+The counter doesn’t update in real time.
+The number displayed does not match the actual number of characters entered.
 
-2. Initial State
+2. Placeholder & Initial State
+
 Test Case
+The textarea should provide guidance with a placeholder message, and the counter should show zero initially.
 
-When the page loads, the dropdown should be set to All, showing all available products.
+Expected Behavior:
+
+Placeholder text "Start typing..." is visible when the textarea is empty.
+Character count is 0 before the user types.
 
 Passes if:
 
-Dropdown shows All on page load.
-All products (Clothing, Electronics, Books) are visible.
+The placeholder disappears as soon as the user starts typing.
+The counter begins at zero on page load.
 
 Fails if:
 
-The dropdown defaults to a specific category.
-Some products are hidden before any selection is made.
+The placeholder is missing or doesn’t clear after typing starts.
+The counter shows a non-zero value before typing.
 
-3. Layout & Responsiveness
+3. Layout & Styling
 Test Case
 
-The product list and dropdown should be clearly structured inside a styled container.
+The feature should be neatly styled and easy to use.
 
 Layout Structure:
 
-Heading: "Product List" at the top.
-
-Dropdown Menu: Below heading, labeled Filter by Category.
-
-Product List: Each product displayed as a separate row inside a bordered box.
+Heading: "Live Character Counter" displayed above the textarea.
+Textarea: Expands to full width with a fixed height.
+Counter: Positioned below the textarea, bold text, showing "Characters: X".
 
 Passes if:
 
-Dropdown and products are aligned neatly.
-Each product appears in its own row.
-Layout remains consistent when resizing the browser window.
+The counter is aligned properly under the textarea.
+Textarea is large enough for comfortable typing.
+Styling remains consistent across different screen sizes.
 
 Fails if:
 
-Products overlap or appear inline instead of block rows.
-Container breaks when resizing.
+The counter overlaps with the textarea.
+Elements are misaligned or cut off on resizing.
 
-4. User Interaction
+4. Accessibility
 Test Case
 
-Filtering must be seamless and user-friendly.
+The component should be easy for all users to interact with.
 
 Passes if:
 
-Selecting a new category instantly hides irrelevant products.
-Dropdown interaction feels smooth with no reloads.
+The placeholder provides clear instructions.
+Counter text is readable and not too small.
+
+Works smoothly across common browsers (Chrome, Firefox, Edge).
 
 Fails if:
 
-User has to refresh the page to see filtered results.
-Dropdown selection causes layout glitches.
+The placeholder is unclear or missing.
+Counter text is too small or blends into the background.
+
 CSS Styling Breakdown
-Key Components
+Key Styles
 
-Container:
+Textarea:
 
-Bordered box with padding and margin for spacing.
-Fixed width (~500px) for consistent layout.
+Width: 100%
+Height: ~100px for comfortable typing
+Font size: 16px for readability
 
-Dropdown Menu:
+Padding: 8–10px
 
-Positioned below the heading.
-Adequate padding for clickable area.
+Counter:
 
-Product Items:
+Margin-top: small spacing from textarea
+Font-weight: bold
 
-Displayed as block elements (one per row).
-Light border (#ddd) with subtle background (#fff) for readability.
-Small margin between products.
+Color: dark gray/black for visibility
+Container (Optional):
+
+Border around the feature for a clean, framed look
+Padding to prevent text from touching the edges
 
 Learning Outcomes
 
-DOM Manipulation: Understand how to use JavaScript to dynamically show/hide elements.
-Event Handling: Learn to handle change events on dropdowns.
-Real-time Filtering: Gain experience in updating the DOM instantly without reloading.
-UI Structuring: Practice creating clean, responsive layouts with CSS.
+Event Handling: Practice handling input events in JavaScript.
+Dynamic Updates: Learn how to update the DOM in real time.
+User Interaction: Understand how to provide instant feedback to users.
+Styling Basics: Improve layout and typography for readability and usability.
