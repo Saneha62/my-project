@@ -1,102 +1,104 @@
-Dynamic Product Filter with Dropdown: Test Cases & Styling Guide
-This document outlines the functionality, expected behavior, and styling approach for the Dynamic Product Filter feature.
+# Dashboard UI: Test Cases & Styling Guide
 
-1. Dropdown Filtering
-Test Case
+Here are the test cases and styling guidelines for the admin dashboard, presented in a clear and organized format.
 
-The dropdown allows users to filter products by category: All, Clothing, Electronics, Books.
-Expected Behavior (All Selected):
+---
 
-All products are displayed in a vertical list.
-Expected Behavior (Specific Category Selected):
+## 1. Theme Switch (Dark Mode)
 
-Only products that belong to the chosen category are displayed.
+### Test Case
+This feature allows users to switch between Light and Dark mode using a checkbox.
 
-Passes if:
+* **Expected Behavior (Light Mode - Default):**
+    * **Header & Footer:** Green (`rgb(56, 201, 56)`)
+    * **Navigation:** Gray (`rgb(113, 111, 111)`)
+    * **Main Area:** White
+* **Expected Behavior (Dark Mode - Checkbox Checked):**
+    * **Header & Footer:** Dark gray (`rgb(113, 111, 111)`)
+    * **Navigation:** Light gray (`rgb(244, 236, 236)`)
+    * **Main Area:** Very dark gray (`rgb(40, 39, 39)`)
 
-Selecting a category instantly updates the product list.
-The products shown exactly match the selected category.
+* **Passes if:**
+    * Clicking the **"Dark Mode"** label instantly toggles the theme.
+    * The colors update to the exact RGB values listed above.
+* **Fails if:**
+    * Clicking the label does nothing, or the colors don't change correctly.
+    * The layout breaks or elements disappear after switching the theme.
 
-Fails if:
+---
 
-Filtering does not happen in real time.
-Wrong products appear or disappear incorrectly.
+## 2. Layout & Responsiveness
 
-2. Initial State
-Test Case
+### Test Case
+The dashboard uses **CSS Grid** to create a responsive layout with distinct sections.
 
-When the page loads, the dropdown should be set to All, showing all available products.
+* **Grid Structure:**
+    * **Top Row:** Header (150px tall, spans both columns)
+    * **Left Column:** Navigation (200px fixed width)
+    * **Right Column:** Main Content (adjusts to fill remaining space)
+    * **Bottom Row:** Footer (100px tall, spans both columns)
 
-Passes if:
+* **Passes if:**
+    * The navigation panel stays on the left, and the main content fills the rest of the space.
+    * The header and footer stretch across the entire width of the screen.
+    * All elements remain aligned and do not overlap when you resize the browser window.
+* **Fails if:**
+    * The navigation panel overlaps the main content.
+    * The header or footer shifts out of position during resizing.
 
-Dropdown shows All on page load.
-All products (Clothing, Electronics, Books) are visible.
+---
 
-Fails if:
+## 3. Navigation Links
 
-The dropdown defaults to a specific category.
-Some products are hidden before any selection is made.
+### Test Case
+The navigation bar displays a vertical list of links: **"Home," "Users,"** and **"Settings."**
 
-3. Layout & Responsiveness
-Test Case
+* **Passes if:**
+    * All three links are clearly visible in both Light and Dark mode.
+    * The navigation bar's background color changes according to the theme.
+* **Fails if:**
+    * Any link is cut off, hidden, or disappears.
+    * The background color of the navigation bar fails to update with the theme switch.
 
-The product list and dropdown should be clearly structured inside a styled container.
+---
 
-Layout Structure:
+## 4. Main Content Area
 
-Heading: "Product List" at the top.
+### Test Case
+This area displays a welcome message, **"Welcome, Admin!,"** along with placeholder text for reports or charts.
 
-Dropdown Menu: Below heading, labeled Filter by Category.
+* **Passes if:**
+    * The text is easy to read in both Light and Dark mode.
+    * The area resizes properly as the browser window is resized.
+* **Fails if:**
+    * The background color remains static and doesn't switch with the theme.
+    * The text is hidden or overflows outside of its container.
 
-Product List: Each product displayed as a separate row inside a bordered box.
+---
 
-Passes if:
+## CSS Styling Breakdown
 
-Dropdown and products are aligned neatly.
-Each product appears in its own row.
-Layout remains consistent when resizing the browser window.
+### Theme Variables
 
-Fails if:
+* **`--primary-color`:** Green for header/footer (Light Mode) and Dark Gray (Dark Mode)
+* **`--nav-color`:** Gray for navigation (Light Mode) and Light Gray (Dark Mode)
+* **`--main-bg-color`:** White for main content (Light Mode) and Dark Gray (Dark Mode)
 
-Products overlap or appear inline instead of block rows.
-Container breaks when resizing.
+We use **CSS variables** within a `:root` selector to define default (Light Mode) colors. When the hidden `#theme-switch` checkbox is checked, a subsequent `.dashboard` selector overrides these variables to apply the Dark Mode colors.
 
-4. User Interaction
-Test Case
+### Key Components
 
-Filtering must be seamless and user-friendly.
+* **Header:** Uses a **Flexbox** layout to align the title and theme toggle.
+* **Navigation Sidebar:** A fixed-width column on the left with a background color that changes based on the theme.
+* **Footer:** A full-width element at the bottom of the page with centered text.
 
-Passes if:
+### Hidden Checkbox
 
-Selecting a new category instantly hides irrelevant products.
-Dropdown interaction feels smooth with no reloads.
+The checkbox itself (`#theme-switch`) is visually hidden, but its state is used to trigger the theme change. This is done by applying styling rules to the sibling `.dashboard` element when the checkbox is checked (`input:checked ~ .dashboard`).
 
-Fails if:
+### Learning Outcomes
 
-User has to refresh the page to see filtered results.
-Dropdown selection causes layout glitches.
-CSS Styling Breakdown
-Key Components
-
-Container:
-
-Bordered box with padding and margin for spacing.
-Fixed width (~500px) for consistent layout.
-
-Dropdown Menu:
-
-Positioned below the heading.
-Adequate padding for clickable area.
-
-Product Items:
-
-Displayed as block elements (one per row).
-Light border (#ddd) with subtle background (#fff) for readability.
-Small margin between products.
-
-Learning Outcomes
-
-DOM Manipulation: Understand how to use JavaScript to dynamically show/hide elements.
-Event Handling: Learn to handle change events on dropdowns.
-Real-time Filtering: Gain experience in updating the DOM instantly without reloading.
-UI Structuring: Practice creating clean, responsive layouts with CSS.
+1.  **CSS Grid:** Understand how to use it for a clean, responsive layout.
+2.  **CSS Variables:** Learn to implement them for dynamic theme switching.
+3.  **UI Test Cases:** Develop the skill of writing clear tests to ensure functionality.
+4.  **CSS Debugging:** Practice spotting and fixing common styling issues.
