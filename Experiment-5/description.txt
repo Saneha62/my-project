@@ -1,0 +1,104 @@
+# Dashboard UI: Test Cases & Styling Guide
+
+Here are the test cases and styling guidelines for the admin dashboard, presented in a clear and organized format.
+
+---
+
+## 1. Theme Switch (Dark Mode)
+
+### Test Case
+This feature allows users to switch between Light and Dark mode using a checkbox.
+
+* **Expected Behavior (Light Mode - Default):**
+    * **Header & Footer:** Green (`rgb(56, 201, 56)`)
+    * **Navigation:** Gray (`rgb(113, 111, 111)`)
+    * **Main Area:** White
+* **Expected Behavior (Dark Mode - Checkbox Checked):**
+    * **Header & Footer:** Dark gray (`rgb(113, 111, 111)`)
+    * **Navigation:** Light gray (`rgb(244, 236, 236)`)
+    * **Main Area:** Very dark gray (`rgb(40, 39, 39)`)
+
+* **Passes if:**
+    * Clicking the **"Dark Mode"** label instantly toggles the theme.
+    * The colors update to the exact RGB values listed above.
+* **Fails if:**
+    * Clicking the label does nothing, or the colors don't change correctly.
+    * The layout breaks or elements disappear after switching the theme.
+
+---
+
+## 2. Layout & Responsiveness
+
+### Test Case
+The dashboard uses **CSS Grid** to create a responsive layout with distinct sections.
+
+* **Grid Structure:**
+    * **Top Row:** Header (150px tall, spans both columns)
+    * **Left Column:** Navigation (200px fixed width)
+    * **Right Column:** Main Content (adjusts to fill remaining space)
+    * **Bottom Row:** Footer (100px tall, spans both columns)
+
+* **Passes if:**
+    * The navigation panel stays on the left, and the main content fills the rest of the space.
+    * The header and footer stretch across the entire width of the screen.
+    * All elements remain aligned and do not overlap when you resize the browser window.
+* **Fails if:**
+    * The navigation panel overlaps the main content.
+    * The header or footer shifts out of position during resizing.
+
+---
+
+## 3. Navigation Links
+
+### Test Case
+The navigation bar displays a vertical list of links: **"Home," "Users,"** and **"Settings."**
+
+* **Passes if:**
+    * All three links are clearly visible in both Light and Dark mode.
+    * The navigation bar's background color changes according to the theme.
+* **Fails if:**
+    * Any link is cut off, hidden, or disappears.
+    * The background color of the navigation bar fails to update with the theme switch.
+
+---
+
+## 4. Main Content Area
+
+### Test Case
+This area displays a welcome message, **"Welcome, Admin!,"** along with placeholder text for reports or charts.
+
+* **Passes if:**
+    * The text is easy to read in both Light and Dark mode.
+    * The area resizes properly as the browser window is resized.
+* **Fails if:**
+    * The background color remains static and doesn't switch with the theme.
+    * The text is hidden or overflows outside of its container.
+
+---
+
+## CSS Styling Breakdown
+
+### Theme Variables
+
+* **`--primary-color`:** Green for header/footer (Light Mode) and Dark Gray (Dark Mode)
+* **`--nav-color`:** Gray for navigation (Light Mode) and Light Gray (Dark Mode)
+* **`--main-bg-color`:** White for main content (Light Mode) and Dark Gray (Dark Mode)
+
+We use **CSS variables** within a `:root` selector to define default (Light Mode) colors. When the hidden `#theme-switch` checkbox is checked, a subsequent `.dashboard` selector overrides these variables to apply the Dark Mode colors.
+
+### Key Components
+
+* **Header:** Uses a **Flexbox** layout to align the title and theme toggle.
+* **Navigation Sidebar:** A fixed-width column on the left with a background color that changes based on the theme.
+* **Footer:** A full-width element at the bottom of the page with centered text.
+
+### Hidden Checkbox
+
+The checkbox itself (`#theme-switch`) is visually hidden, but its state is used to trigger the theme change. This is done by applying styling rules to the sibling `.dashboard` element when the checkbox is checked (`input:checked ~ .dashboard`).
+
+### Learning Outcomes
+
+1.  **CSS Grid:** Understand how to use it for a clean, responsive layout.
+2.  **CSS Variables:** Learn to implement them for dynamic theme switching.
+3.  **UI Test Cases:** Develop the skill of writing clear tests to ensure functionality.
+4.  **CSS Debugging:** Practice spotting and fixing common styling issues.

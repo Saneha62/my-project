@@ -107,4 +107,4 @@ Learning Outcomes
 Event Handling: Practice handling input events in JavaScript.
 Dynamic Updates: Learn how to update the DOM in real time.
 User Interaction: Understand how to provide instant feedback to users.
-Styling Basics: Improve layout and typography for readability and usability.s
+Styling Basics: Improve layout and typography for readability and usability.
